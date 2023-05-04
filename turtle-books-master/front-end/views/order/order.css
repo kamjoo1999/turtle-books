@@ -1,0 +1,80 @@
+.section {
+  display: grid;
+}
+
+.card-content-wrap {
+  width: 80%;
+}
+
+#order {
+  border: 2px solid rgb(218, 218, 218);
+  width: 70%;
+  margin: 2rem auto;
+  border-radius: 8px;
+}
+
+#addressBtn {
+  width: 100%;
+  margin-top: 1rem;
+  font-weight: bold;
+  border: 1px solid rgb(218, 218, 218);
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+#address-btn:hover {
+  background-color: azure;
+}
+
+hr {
+  border: none;
+  border-top: 3px dotted rgb(227, 227, 232);
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+  margin: 0.5rem auto;
+}
+
+.order-title {
+  font-weight: bold;
+  font-size: large;
+}
+
+.address-title {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.payments-box {
+  font-weight: bold;
+  position: fixed;
+  width: 270px;
+  right: 5rem;
+  top: 140px;
+}
+
+#paymentsBtn {
+  margin-top: 1em;
+}
+
+.box p {
+  margin-bottom: 0.5rem;
+}
+.coupon {
+  width: 500px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.totalCost {
+  font-size: 20px;
+}
+
+.paymentsLabel {
+  font-size: 16px;
+  border-bottom: 1px solid black;
+  margin-top: 0.5rem;
+}

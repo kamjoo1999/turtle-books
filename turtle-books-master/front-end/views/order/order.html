@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문 페이지</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="order.css" />
+    <script src="../common/loadHTML.js" type="text/javascript"></script>
+    <script src="order.js" type="module" defer></script>
+    <link rel="stylesheet" href="../common/Header/header.css" />
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  </head>
+  <body>
+    <!-- 공통 헤더 구역 -->
+    <script>
+      loadHTML("../common/Header/header.html");
+    </script>
+    <main class="section">
+      <h2 class="title is-4" id="order-title">주문/결제</h2>
+      <div class="card-content-wrap">
+        <div class="card-content" id="order">
+          <div class="columns">
+            <div class="column">
+              <!-- 배송지 정보를 검색하여 입력하는 구역 -->
+              <table class="table is-fullwidth">
+                <tbody>
+                  <tr>
+                    <th><h3 class="order-title">배송지 정보</h3></th>
+                    <td>
+                      <div class="address-title">📖 배송지를 등록해주세요.</div>
+                      <div>
+                        <button
+                          class="button is-link is-outlined"
+                          id="addressBtn"
+                        >
+                          🚛 배송지 입력
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr />
+              <!-- 위의 배송지 입력으로 찾은 주소가 아래 필드에 입력됨 -->
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">이름</label>
+                </div>
+                <div class="field-body search">
+                  <div class="field">
+                    <p class="control">
+                      <input
+                        class="input"
+                        placeholder="성함을 작성해주세요."
+                        id="username"
+                        type="text"
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal no-label">
+                  <label class="label">주소</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input
+                        class="input"
+                        placeholder="배송받을 주소를 검색해주세요."
+                        id="address"
+                        type="text"
+                        readonly
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal no-label"></div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input
+                        class="input"
+                        id="detailAddress"
+                        type="text"
+                        placeholder="상세주소를 입력하세요."
+                        autocomplete="on"
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">요청사항</label>
+                </div>
+                <div class="field-body">
+                  <div class="select">
+                    <select>
+                      <option value="0">
+                        배송시 요청사항을 선택해 주세요.
+                      </option>
+                      <option value="1" class="select-option">
+                        배송 전 연락바랍니다.
+                      </option>
+                      <option value="2" class="select-option">
+                        부재 시 경비실에 맡겨주세요.
+                      </option>
+                      <option value="3" class="select-option">
+                        부재 시 문 앞에 놓아주세요.
+                      </option>
+                      <option value="4" class="select-option">
+                        직접 수령하겠습니다.
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="card-content" id="order">
+          <div class="columns">
+            <div class="column">
+              <h3 class="order-title">주문상품</h3>
+              <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>상품 이름</th>
+                    <th>수량</th>
+                    <th>가격</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>책 A</td>
+                    <td>1</td>
+                    <td>10,000원</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="2">총 가격</th>
+                    <td>10,000원</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div> -->
+        <div class="card" id="order">
+          <div class="card-content">
+            <div class="content">
+              <p class="order-title">할인쿠폰</p>
+              <select class="coupon">
+                <option>적용가능한 쿠폰이 없습니다.</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 결제 정보가 담겨 확인 후 결제하기 버튼을 누르는 사이드 바 -->
+      <div class="payments-box">
+        <!-- <div class="box">
+          <h1 class="title">결제 정보</h1>
+          <p>상품금액 0원</p>
+          <p>배송비 0원</p>
+          <p>쿠폰할인 0원</p>
+          <p>포인트 사용 0원</p>
+          <hr />
+          <p>최종결제금액 0원</p>
+          <button class="button is-primary is-fullwidth" id="paymentsBtn">
+            결제하기
+          </button>
+        </div> -->
+      </div>
+    </main>
+  </body>
+</html>
